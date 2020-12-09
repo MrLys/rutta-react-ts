@@ -1,0 +1,40 @@
+.box {
+  width: 4em;
+  height: 2em;
+
+
+
+  &.checked {
+    background-color: forestgreen;
+    &.selected {
+      border: solid forestgreen 1px;
+      &:not(:last-child &.checked) {
+        border-right: solid dimgray 0.5px;
+      }
+    }
+  }
+
+  &.skipped {
+    background-color: lightgray;
+    &.selected {
+      border: solid lightgray 1px;
+      &:not(:last-child &.checked) {
+        border-right: solid dimgray 0.5px;
+      }
+    }
+  }
+
+  &.failed {
+    background-color: darkred;
+    &.selected {
+      border: solid darkred 1px;
+      &:not(:last-child &.checked) {
+        border-right: solid dimgray 0.5px;
+      }
+    }
+  }
+  &.unselected {
+    border: solid wheat 1px;
+  }
+
+}

@@ -1,0 +1,13 @@
+.habit-container{
+  display: flex;
+  flex-direction: column;
+  .week-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .habit-name {
+    align-self: flex-start;
+  }
+}

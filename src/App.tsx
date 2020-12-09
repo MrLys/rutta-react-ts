@@ -1,0 +1,18 @@
+import React from 'react';
+import './App.css';
+import { Route } from "react-router-dom";
+
+import { ProSidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
+import 'react-pro-sidebar/dist/css/styles.css';
+import HabitsPage from "./pages/habits/habits.component";
+
+
+function App() {
+  return (
+    <div className="App">
+        <Route exact path="/habits" component={HabitsPage} />
+    </div>
+  );
+}
+
+export default App;
