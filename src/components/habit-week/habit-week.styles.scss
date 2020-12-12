@@ -1,0 +1,10 @@
+.week {
+  align-content: center;
+  height: auto;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  
+  &:not(:last-child) {
+    border-right: solid dimgray 0.5px;
+  }
+}

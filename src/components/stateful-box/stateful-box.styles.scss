@@ -6,7 +6,7 @@
 
   &.checked {
     background-color: forestgreen;
-    &.selected {
+    &.unselected {
       border: solid forestgreen 1px;
       &:not(:last-child &.checked) {
         border-right: solid dimgray 0.5px;
@@ -16,9 +16,9 @@
 
   &.skipped {
     background-color: lightgray;
-    &.selected {
+    &.unselected {
       border: solid lightgray 1px;
-      &:not(:last-child &.checked) {
+      &:not(:last-child) {
         border-right: solid dimgray 0.5px;
       }
     }
@@ -26,15 +26,25 @@
 
   &.failed {
     background-color: darkred;
-    &.selected {
+    &.unselected {
       border: solid darkred 1px;
-      &:not(:last-child &.checked) {
+      &:not(:last-child) {
         border-right: solid dimgray 0.5px;
       }
     }
   }
-  &.unselected {
-    border: solid wheat 1px;
+  &.none {
+    background-color: wheat;
+    &.unselected {
+      border: solid wheat 1px;
+      &:not(:last-child) {
+        border-right: solid dimgray 0.5px;
+      }
+    }
+  }
+
+  &.selected {
+    border: solid black 1px;
   }
 
 }
