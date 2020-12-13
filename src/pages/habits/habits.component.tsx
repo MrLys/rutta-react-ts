@@ -27,7 +27,7 @@ const HabitsPage = ({fetchHabits, mark, selectGroove, ...props} : HabitsPageProp
     }, [props, fetchHabits]);
     if (props.habits?.length > 0) {
         return (
-            <div>
+            <div className="habitWeek-container">
                 <div className="habits-container">
                     <div>
                         <HabitWeek />
@@ -36,16 +36,18 @@ const HabitsPage = ({fetchHabits, mark, selectGroove, ...props} : HabitsPageProp
                         ))}
 
                     </div>
+                </div >
+                <div className="buttonContainer">
+                <Button variant="contained" color="primary" onClick={() => mark(HabitStates.CHECKED)} startIcon={<FiCheckCircle />}>
+                   Success
+                </Button>
+                <Button variant="contained" color="secondary" onClick={() => mark(HabitStates.FAILED)} startIcon={<FiXCircle />}>
+                    Failed
+                </Button>
+                <Button variant="contained" onClick={() => mark(HabitStates.SKIPPED)} startIcon={<FiMinusCircle />}>
+                   Skipped
+                </Button>
                 </div>
-                <Button variant="contained" color="primary" onClick={() => mark(HabitStates.CHECKED)}>
-                    <FiCheckCircle />
-                </Button>
-                <Button variant="contained" color="secondary" onClick={() => mark(HabitStates.FAILED)}>
-                    <FiXCircle />
-                </Button>
-                <Button variant="contained" onClick={() => mark(HabitStates.SKIPPED)}>
-                    <FiMinusCircle />
-                </Button>
             </div>
         );
     }

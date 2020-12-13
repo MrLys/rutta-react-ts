@@ -7,37 +7,37 @@
     height: 100%;
     width: 100%;
     &.checked {
-      background-color: forestgreen;
+      background-color: #4caf50;
 
       &.unselected {
-        border: solid forestgreen 1px;
+        border: solid #4caf50 1px;
 
       }
     }
 
     &.skipped {
-      background-color: lightgray;
+      background-color:  #9e9e9e;
 
       &.unselected {
-        border: solid lightgray 1px;
+        border: solid  #9e9e9e 1px;
 
       }
     }
 
     &.failed {
-      background-color: darkred;
+      background-color: #f44336;
 
       &.unselected {
-        border: solid darkred 1px;
+        border: solid #f44336 1px;
 
       }
     }
 
     &.none {
-      background-color: wheat;
+      background-color:  #fafafa;
 
       &.unselected {
-        border: solid wheat 1px;
+        border: solid  #fafafa 1px;
       }
     }
 

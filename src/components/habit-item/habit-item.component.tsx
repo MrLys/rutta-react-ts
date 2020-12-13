@@ -12,7 +12,7 @@ const HabitItem = (props: HabitItemProps) => {
         <div className="week-container">
             {props?.habit.state.map((state: Groove) =>
                 (
-                    <StatefulBox groove={state}/>
+                    <StatefulBox groove={state} key={state.id}/>
                 ))}
         </div>
       </div>

@@ -1,7 +1,15 @@
-.habits-container {
-  display: flex;
-  justify-content: center;
+.habitWeek-container {
   margin: 1em 2em 1em 2em;
-  padding: 1em;
+
+  .habits-container {
+    display: flex;
+    justify-content: center;
+    padding: 1em;
+  }
+
+  .buttonContainer {
+    display: flex;
+    justify-content: space-evenly;
+  }
 
 }

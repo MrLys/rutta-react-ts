@@ -20,7 +20,7 @@ const HabitWeek = () => {
         <div className="habit-container" >
         <div className="week-container">
         {a.map((day : Day) => (
-            <div className='box unselected week'>
+            <div className='box unselected week' key={day.id}>
                     {strip(day.name)}
             </div>
             ))
