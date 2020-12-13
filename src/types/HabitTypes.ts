@@ -1,5 +1,5 @@
 enum HabitStates {
-    NONE = '',
+    NONE = 'none',
     CHECKED = 'checked',
     SKIPPED = 'skipped',
     FAILED = 'failed'
@@ -7,7 +7,7 @@ enum HabitStates {
 export type Habit = {
     name : string
     id : number
-    state : HabitWeek
+    state : Groove[]
 };
 export type Groove = {
     id: number

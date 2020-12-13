@@ -1,6 +1,6 @@
 import HabitActionTypes, {HabitAction} from "./habit.types";
 import {Habit} from "../../types/HabitTypes";
-import markGrooves from "./habit.util";
+import markGrooves, {selectGroove} from "./habit.util";
 
 export type HabitState = {
     isFetching: boolean
@@ -40,6 +40,11 @@ const habitReducer = (state : HabitState = INITIAL_STATE, action : HabitAction) 
             return {
                 ...state,
                 habits: markGrooves(state.habits, action.payload)
+            };
+        case HabitActionTypes.SELECT_GROOVE:
+            return {
+                ...state,
+                habits: selectGroove(state.habits, action.payload)
             };
         default:
             console.log("default");

@@ -16,8 +16,13 @@ export const fetchHabitsSuccess = (habits: Array<Habit>) => ({
     payload: habits
 });
 
-export const markGrooves = (mark : HabitStates,grooves : Array<Groove>) => ({
-    type: HabitActionTypes.MARK_GROOVE
+export const markGrooves = (mark : HabitStates) => ({
+    type: HabitActionTypes.MARK_GROOVE,
+    payload: mark
 });
 
-export const selectGroove = ()
+export const selectGroove = (groove: Groove) => ({
+    type: HabitActionTypes.SELECT_GROOVE,
+    payload: groove
+});
+

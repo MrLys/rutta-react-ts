@@ -21,7 +21,7 @@ const createHabit = (name : string ) : Habit =>  {
     let habit : Habit = {
         name: name,
         id: counter,
-        state: {state: week.map((day : Date) : Groove => {counter++;return {id: counter, state: getState(), date: day, selected: false}})}};
+        state: week.map((day : Date) : Groove => {counter++;return {id: counter, state: getState(), date: day, selected: false}})};
     return habit;
 }
 const generateHabits = () : Array<Habit> =>  {

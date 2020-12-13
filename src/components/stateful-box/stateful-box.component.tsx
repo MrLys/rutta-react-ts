@@ -8,8 +8,10 @@ type StateFulBoxProps = {
   groove: Groove
 };
 const StatefulBox = ({ groove, selectAction } : {groove : Groove, selectAction : any}) => {
-  const className = classNames('box', groove.state, {selected: groove.selected, unselected: !groove.selected});
-  return <div className={className} onClick={() => selectAction(groove)}/>;
+  const className = classNames('innerBox', groove.state, {selected: groove.selected, unselected: !groove.selected});
+  return <div className='box' onClick={() => selectAction(groove)}>
+    <div className={className} />
+  </div>;
 };
 const mapStateToProps = (state : StateFulBoxProps, ownProps : StateFulBoxProps) : StateFulBoxProps => {
   return state

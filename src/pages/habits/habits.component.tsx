@@ -8,19 +8,20 @@ import { Button } from "@material-ui/core";
 import {FiCheckCircle, FiMinusCircle, FiXCircle} from "react-icons/all";
 import {GlobalState} from "../../types/types";
 import { connect } from "react-redux";
-import {fetchHabitsStart, markGrooves} from "../../redux/habit/habit.actions";
+import {fetchHabitsStart, markGrooves, selectGroove} from "../../redux/habit/habit.actions";
 import {HabitState} from "../../redux/habit/habit.reducer";
+import HabitWeek from "../../components/habit-week/habit-week.component";
 
 type HabitsPageProps = {
     habits : Habit[]
 }
-type State = {
+export type State = {
     habit: GlobalState & HabitState
 }
 
-type HabitsPagePropsDispatch = HabitsPageProps & {fetchHabits : any, markGrooves: any}
+type HabitsPagePropsDispatch = HabitsPageProps & {fetchHabits : any, mark: any, selectGroove: any}
 
-const HabitsPage = ({fetchHabits, markGrooves, ...props} : HabitsPagePropsDispatch) => {
+const HabitsPage = ({fetchHabits, mark, selectGroove, ...props} : HabitsPagePropsDispatch) => {
     useEffect(() => {
         fetchHabits();
     }, [props, fetchHabits]);
@@ -28,18 +29,21 @@ const HabitsPage = ({fetchHabits, markGrooves, ...props} : HabitsPagePropsDispat
         return (
             <div>
                 <div className="habits-container">
-                    {props.habits?.map((habit: Habit) => (
-                        <HabitItem habit={habit} key={habit.id}/>
-                    ))}
+                    <div>
+                        <HabitWeek />
+                        {props.habits?.map((habit: Habit) => (
+                            <HabitItem habit={habit} key={habit.id}/>
+                        ))}
 
+                    </div>
                 </div>
-                <Button variant="contained" color="primary" >
+                <Button variant="contained" color="primary" onClick={() => mark(HabitStates.CHECKED)}>
                     <FiCheckCircle />
                 </Button>
-                <Button variant="contained" color="secondary">
+                <Button variant="contained" color="secondary" onClick={() => mark(HabitStates.FAILED)}>
                     <FiXCircle />
                 </Button>
-                <Button variant="contained" >
+                <Button variant="contained" onClick={() => mark(HabitStates.SKIPPED)}>
                     <FiMinusCircle />
                 </Button>
             </div>
@@ -56,6 +60,7 @@ const mapStateToProps = (state : State, ownProps : HabitsPageProps) : HabitsPage
 };
 const mapDispatchToProps = (dispatch : any) => ({
     fetchHabits: () => dispatch(fetchHabitsStart()),
-    click: (type: HabitStates, grooves : Array<Groove>) => {dispatch(markGrooves(type, grooves))},
+    mark: (type: HabitStates) => dispatch(markGrooves(type)),
+    selectGroove: (groove: Groove) => dispatch(selectGroove(groove))
 });
 export default connect(mapStateToProps, mapDispatchToProps)(HabitsPage);

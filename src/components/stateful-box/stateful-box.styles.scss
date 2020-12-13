@@ -1,50 +1,49 @@
 .box {
   width: 4em;
   height: 2em;
+  margin-right: 4px;
 
+  .innerBox {
+    height: 100%;
+    width: 100%;
+    &.checked {
+      background-color: forestgreen;
 
+      &.unselected {
+        border: solid forestgreen 1px;
 
-  &.checked {
-    background-color: forestgreen;
-    &.unselected {
-      border: solid forestgreen 1px;
-      &:not(:last-child &.checked) {
-        border-right: solid dimgray 0.5px;
       }
     }
-  }
 
-  &.skipped {
-    background-color: lightgray;
-    &.unselected {
-      border: solid lightgray 1px;
-      &:not(:last-child) {
-        border-right: solid dimgray 0.5px;
+    &.skipped {
+      background-color: lightgray;
+
+      &.unselected {
+        border: solid lightgray 1px;
+
       }
     }
-  }
 
-  &.failed {
-    background-color: darkred;
-    &.unselected {
-      border: solid darkred 1px;
-      &:not(:last-child) {
-        border-right: solid dimgray 0.5px;
+    &.failed {
+      background-color: darkred;
+
+      &.unselected {
+        border: solid darkred 1px;
+
       }
     }
-  }
-  &.none {
-    background-color: wheat;
-    &.unselected {
-      border: solid wheat 1px;
-      &:not(:last-child) {
-        border-right: solid dimgray 0.5px;
+
+    &.none {
+      background-color: wheat;
+
+      &.unselected {
+        border: solid wheat 1px;
       }
     }
-  }
 
-  &.selected {
-    border: solid black 1px;
-  }
+    &.selected {
+      border: solid black 1px;
+    }
 
+  }
 }
