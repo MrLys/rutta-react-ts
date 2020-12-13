@@ -2,20 +2,20 @@ import HabitActionTypes, {HabitAction} from "./habit.types";
 import {Habit} from "../../types/HabitTypes";
 import markGrooves, {selectGroove} from "./habit.util";
 
-export type HabitState = {
+export type HabitsState = {
     isFetching: boolean
     errorMessage: string
     erroneous: boolean
     habits: Array<Habit>
 };
-const INITIAL_STATE : HabitState = {
+const INITIAL_STATE : HabitsState = {
     isFetching: false,
     errorMessage: "",
     erroneous: false,
-    habits: []
+    habits: [],
 }
 
-const habitReducer = (state : HabitState = INITIAL_STATE, action : HabitAction) : HabitState => {
+const habitsReducer = (state : HabitsState = INITIAL_STATE, action : HabitAction) : HabitsState => {
     console.log("reducer action:", action.type);
     switch(action.type) {
         case (HabitActionTypes.FETCH_HABITS_SUCCESS):
@@ -52,4 +52,4 @@ const habitReducer = (state : HabitState = INITIAL_STATE, action : HabitAction) 
     }
 };
 
-export default habitReducer;
+export default habitsReducer;

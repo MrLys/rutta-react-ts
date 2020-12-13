@@ -9,5 +9,15 @@
 
   .habit-name {
     align-self: flex-start;
+    text-decoration: none;
+    color: #e0e0e0;
+    :visited {
+      color: red;
+    }
+  }
+  a:hover {
+    cursor: pointer;
+    color: #e0e0e0;
+    text-decoration: underline;
   }
 }

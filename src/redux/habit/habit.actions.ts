@@ -26,3 +26,18 @@ export const selectGroove = (groove: Groove) => ({
     payload: groove
 });
 
+export const fetchHabitStart = (id : number) => ({
+    type: HabitActionTypes.FETCH_HABIT_START,
+    payload: id
+});
+
+export const fetchHabitFailure = (error: any) => ({
+    type: HabitActionTypes.FETCH_HABIT_FAILURE,
+    payload: error
+});
+
+export const fetchHabitSuccess = (habit : Habit) => ({
+    type: HabitActionTypes.FETCH_HABIT_SUCCESS,
+    payload: habit
+});
+

@@ -9,14 +9,14 @@ import {FiCheckCircle, FiMinusCircle, FiXCircle} from "react-icons/all";
 import {GlobalState} from "../../types/types";
 import { connect } from "react-redux";
 import {fetchHabitsStart, markGrooves, selectGroove} from "../../redux/habit/habit.actions";
-import {HabitState} from "../../redux/habit/habit.reducer";
+import {HabitsState} from "../../redux/habit/habitsReducer";
 import HabitWeek from "../../components/habit-week/habit-week.component";
 
 type HabitsPageProps = {
     habits : Habit[]
 }
 export type State = {
-    habit: GlobalState & HabitState
+    habits: GlobalState & HabitsState
 }
 
 type HabitsPagePropsDispatch = HabitsPageProps & {fetchHabits : any, mark: any, selectGroove: any}
@@ -58,7 +58,7 @@ const HabitsPage = ({fetchHabits, mark, selectGroove, ...props} : HabitsPageProp
     )
 };
 const mapStateToProps = (state : State, ownProps : HabitsPageProps) : HabitsPageProps => {
-    return { habits: state.habit.habits}
+    return { habits: state.habits.habits}
 };
 const mapDispatchToProps = (dispatch : any) => ({
     fetchHabits: () => dispatch(fetchHabitsStart()),
