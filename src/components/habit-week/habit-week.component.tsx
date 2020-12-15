@@ -14,7 +14,7 @@ const a = [{id: 1, name: 'Monday'},
     {id: 7, name: 'Sunday'}];
 const strip = (name : string) : string => {
    return name.slice(0, 3);
-}
+};
 const HabitWeek = () => {
     return (
         <div className="habit-container" >
@@ -28,6 +28,6 @@ const HabitWeek = () => {
         </div>
         </div>
     )
-}
+};
 
 export default HabitWeek;

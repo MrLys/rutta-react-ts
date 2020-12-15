@@ -24,7 +24,6 @@ const InhouseThemeProvider = (props: any) => {
             }
         },
     }));
-    console.log(theme);
     return (<div>
         <MuiThemeProvider theme={theme}>
             <CssBaseline />

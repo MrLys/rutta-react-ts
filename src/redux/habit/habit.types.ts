@@ -1,4 +1,3 @@
-import {Habit} from "../../types/HabitTypes";
 
 enum HabitActionTypes {
     FETCH_HABITS_START = "FETCH_HABITS_START",
@@ -8,7 +7,11 @@ enum HabitActionTypes {
     FETCH_HABIT_SUCCESS = "FETCH_HABIT_SUCCESS",
     FETCH_HABIT_FAILURE = "FETCH_HABIT_FAILURE",
     MARK_GROOVE = "MARK_GROOVE",
-    SELECT_GROOVE = "SELECT_GROOVE"
+    ADD_HABIT_START = "ADD_HABIT_START",
+    ADD_HABIT_FAILURE = "ADD_HABIT_FAILURE",
+    ADD_HABIT_SUCCESS = "ADD_HABIT_SUCCESS",
+    SELECT_GROOVE = "SELECT_GROOVE",
+
 };
 
 export type HabitAction = {

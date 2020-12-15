@@ -1,8 +1,7 @@
 import HabitActionTypes from "./habit.types";
-import HabitStates, {Groove, Habit} from "../../types/HabitTypes";
+import HabitStates, {Groove, Habit} from "../../types/types";
 
 export const fetchHabitsStart = () => {
-    console.log("fetchHabitsStart")
     return {type: HabitActionTypes.FETCH_HABITS_START};
 };
 
@@ -39,5 +38,19 @@ export const fetchHabitFailure = (error: any) => ({
 export const fetchHabitSuccess = (habit : Habit) => ({
     type: HabitActionTypes.FETCH_HABIT_SUCCESS,
     payload: habit
+});
+
+export const addHabitStart = (name: string) => ({
+    type: HabitActionTypes.ADD_HABIT_START,
+    payload: name
+});
+
+export const addHabitFailure = (error: any) => ({
+    type: HabitActionTypes.ADD_HABIT_FAILURE,
+    payload: error
+});
+export const addHabitSuccess = (name: string) => ({
+    type: HabitActionTypes.ADD_HABIT_SUCCESS,
+    payload: name
 });
 

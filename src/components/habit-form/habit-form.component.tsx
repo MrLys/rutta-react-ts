@@ -1,20 +1,23 @@
 import React, {useState} from 'react';
+import {connect} from "react-redux";
+import {addHabitStart} from "../../redux/habit/habit.actions";
+import {FiMinusCircle} from "react-icons/all";
+import {Button} from "@material-ui/core";
+import "./habit-form.styles.scss";
 
-const HabitForm = (props: any) => {
-    const [visible, setVisible] = useState(false);
+const HabitForm = ({addHabits}: {addHabits: any}) => {
     const [value, setValue] = useState("");
-    if (visible) {
-        return (
-        <div>
-            <button onClick={() => setVisible(!visible)}> Click here to add </button>
-        </div>);
-    }
     return (
         <div className="habit-form-container">
-            <input type="text" title="Jørgen plis" value={value} onChange={(v) => setValue(v.target.value)}/>
-            <button onClick={() => {console.log(value); props.onClick(value);}}> Add </button>
+            <input className="habit-form-input" type="text" value={value} onChange={(v) => setValue(v.target.value)}/>
+            <Button variant="contained" onClick={() => addHabits(value)} startIcon={<FiMinusCircle />}>
+              Add
+        </Button>
         </div>
     );
 };
 
-export default HabitForm;
+const mapDispatchToProps = (dispatch : any) => ({
+    addHabits: (name: string) => dispatch(addHabitStart(name))
+});
+export default connect(null, mapDispatchToProps)(HabitForm);

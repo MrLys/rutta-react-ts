@@ -1,8 +1,9 @@
 import { combineReducers } from "redux";
-import habitsReducer from "./habit/habitsReducer";
-import habitReducer from "./habit/habitReducer";
+import habitReducer from "./habit/habit.reducer";
+import feedbackReducer from "./feedback/feedback.reducer";
+
 const rootReducer = combineReducers({
-    habits: habitsReducer,
+    feedback: feedbackReducer,
     habit: habitReducer
 });
 

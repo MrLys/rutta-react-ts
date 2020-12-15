@@ -1,28 +1,42 @@
-import React, {useEffect} from 'react';
-import {fetchHabitsStart, fetchHabitStart, markGrooves, selectGroove} from "../../redux/habit/habit.actions";
-import HabitStates, {Groove, Habit} from "../../types/HabitTypes";
+import React from 'react';
+import './habit.styles.scss';
+import {fetchHabitsStart} from "../../redux/habit/habit.actions";
 import {connect} from "react-redux";
+import {selectHabit} from "../../redux/habit/habit.selector";
+import {GlobalState, Habit} from "../../types/types";
+import {Card} from "@material-ui/core";
 
 type HabitPageProps = {
     habit : Habit
 }
 
 
-type HabitPagePropsDispatch = HabitPageProps & {fetchHabit : any} & {match : any}
-const HabitPage = ({match , fetchHabit, habit} : HabitPagePropsDispatch) => {
-    useEffect(() => {
-        fetchHabit(match.params.id)
-    },[habit, fetchHabit])
-    return (
-        <div>
-            {habit.name}
-        </div>
-    )
+type HabitPagePropsDispatch = HabitPageProps & {fetchHabit : any}
+const HabitPage = ({fetchHabit, ...props} : HabitPagePropsDispatch) => {
+    const { habit } = props;
+    if (habit.id < 1) {
+        return (
+            <div>
+                Could not find the habit you are looking for!
+            </div>
+        )
+    } else {
+        return (
+            <Card>
+            <div className="habit-page-container">
+                <div className="habit-name-container">
+                <h1 className="title">{`${habit.name}  ${habit.streak} `} 🔥</h1>
+                </div>
+            </div>
+            </Card>
+        )
+
+    }
 };
-const mapStateToProps = (state : HabitPageProps, ownProps : HabitPageProps) : HabitPageProps => {
-    return { habit: state.habit}
-};
+const mapStateToProps = (state : GlobalState, ownProps : HabitPageProps & {match : any}) : HabitPageProps => ({
+        habit: selectHabit(ownProps.match.params.id)(state),
+});
 const mapDispatchToProps = (dispatch : any) => ({
-    fetchHabit: (id: number) => dispatch(fetchHabitStart(id)),
+    fetchHabits: () => dispatch(fetchHabitsStart()),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(HabitPage);

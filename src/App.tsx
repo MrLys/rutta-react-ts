@@ -4,22 +4,17 @@ import { Route } from "react-router-dom";
 
 import 'react-pro-sidebar/dist/css/styles.css';
 import HabitsPage from "./pages/habits/habits.component";
-import {MuiThemeProvider} from "@material-ui/core";
-import theme from "./theme";
 import InhouseThemeProvider from "./components/theme-provider/theme-provider.component";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import HabitPage from "./pages/habit/habit.component";
+import Feedback from "./components/feedback/feeckback.component";
 
-
-function App() {
-  return (
-    <div className="App">
+const App = () => {
+    return (
+        <div className="App">
             <InhouseThemeProvider  >
-        <Route exact path="/habits" component={HabitsPage} />
-        <Route exact path="/habit/:id" component={HabitPage} />
+                <Route path="/habits" component={HabitsPage} />
+                <Feedback />
             </InhouseThemeProvider>
-    </div>
-  );
-}
-
+        </div>
+    );
+};
 export default App;

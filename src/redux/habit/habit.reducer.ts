@@ -1,22 +1,13 @@
 import HabitActionTypes, {HabitAction} from "./habit.types";
-import {Habit} from "../../types/HabitTypes";
-import markGrooves, {selectGroove} from "./habit.util";
+import markGrooves, {addHabit, selectGroove} from "./habit.util";
+import {HabitState} from "../../types/types";
 
-export type HabitsState = {
-    isFetching: boolean
-    errorMessage: string
-    erroneous: boolean
-    habits: Array<Habit>
-};
-const INITIAL_STATE : HabitsState = {
+const INITIAL_STATE : HabitState = {
     isFetching: false,
-    errorMessage: "",
-    erroneous: false,
     habits: [],
-}
+};
 
-const habitsReducer = (state : HabitsState = INITIAL_STATE, action : HabitAction) : HabitsState => {
-    console.log("reducer action:", action.type);
+const habitReducer = (state : HabitState = INITIAL_STATE, action : HabitAction) : HabitState => {
     switch(action.type) {
         case (HabitActionTypes.FETCH_HABITS_SUCCESS):
             return {
@@ -28,8 +19,6 @@ const habitsReducer = (state : HabitsState = INITIAL_STATE, action : HabitAction
             return {
                 ...state,
                 isFetching: false,
-                erroneous: true,
-                errorMessage: "error"
             };
         case (HabitActionTypes.FETCH_HABITS_START):
             return {
@@ -46,10 +35,24 @@ const habitsReducer = (state : HabitsState = INITIAL_STATE, action : HabitAction
                 ...state,
                 habits: selectGroove(state.habits, action.payload)
             };
+        case HabitActionTypes.ADD_HABIT_START:
+            return {
+                ... state,
+                isFetching: true
+            };
+        case HabitActionTypes.ADD_HABIT_FAILURE:
+            return {
+                ... state,
+            };
+        case HabitActionTypes.ADD_HABIT_SUCCESS:
+            return {
+                ... state,
+                habits: addHabit(state.habits, action.payload)
+            };
         default:
-            console.log("default");
+            console.log("default", action.type, action.payload);
             return state;
     }
 };
 
-export default habitsReducer;
+export default habitReducer;

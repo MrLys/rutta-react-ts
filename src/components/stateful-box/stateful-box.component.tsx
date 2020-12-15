@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import "./stateful-box.styles.scss";
 import classNames from "classnames";
-import HabitStates, {Groove} from "../../types/HabitTypes";
-import {connect, useDispatch} from "react-redux";
+import {connect} from "react-redux";
 import {selectGroove} from "../../redux/habit/habit.actions";
+import {Groove} from "../../types/types";
 type StateFulBoxProps = {
   groove: Groove
 };
@@ -18,5 +18,5 @@ const mapStateToProps = (state : StateFulBoxProps, ownProps : StateFulBoxProps) 
 };
 const mapDispatchToProps = (dispatch: any) => ({
   selectAction: (groove : Groove) => dispatch(selectGroove(groove))
-})
+});
 export default connect(mapStateToProps, mapDispatchToProps)(StatefulBox);

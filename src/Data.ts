@@ -1,5 +1,5 @@
 import {generateWeek} from "./util/HabitUtil";
-import HabitStates, {Groove, Habit, HabitWeek} from "./types/HabitTypes";
+import HabitStates, {Groove, Habit} from "./types/types";
 
 const week = generateWeek(new Date());
 const names = ["Run", "Walk", "Clean", "Stretch"];
@@ -15,17 +15,18 @@ const getState = () : HabitStates => {
     } else {
         return HabitStates.NONE
     }
-}
-const createHabit = (name : string ) : Habit =>  {
+};
+export const createHabit = (name : string ) : Habit =>  {
     counter++;
     let habit : Habit = {
         name: name,
         id: counter,
-        state: week.map((day : Date) : Groove => {counter++;return {id: counter, state: getState(), date: day, selected: false}})};
+        state: week.map((day : Date) : Groove => {counter++;return {id: counter, state: getState(), date: day, selected: false}}),
+        streak: Math.floor(Math.random()*10)};
     return habit;
-}
+};
 const generateHabits = () : Array<Habit> =>  {
     return names.map((name: string) : Habit => createHabit(name))
-}
-const data : Array<Habit> = generateHabits()
+};
+const data : Array<Habit> = generateHabits();
 export default data;
